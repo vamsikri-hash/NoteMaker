@@ -3,5 +3,5 @@ class Note < ApplicationRecord
 
 
   #validations
-  validates_presence_of :title
+  validates_presence_of :title,uniqueness: { case_sensitive: false }
 end

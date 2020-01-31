@@ -3,5 +3,5 @@ class Item < ApplicationRecord
 
 
   #validations
-  validates_presence_of :name
+  validates_presence_of :name,uniqueness: { case_sensitive: false }
 end
