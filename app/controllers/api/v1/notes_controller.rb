@@ -5,7 +5,7 @@ module Api
       before_action  :set_note, only: [:show,:update,:destroy]
 
     def index
-      @notes=current_user.notes
+      @notes=current_user.notes.order("created_at DESC")
       json_response(@notes)
     end
 
@@ -20,7 +20,7 @@ module Api
 
     def update
       @note.update(note_params)
-      head :no_content
+      json_response(@note)
     end
 
 

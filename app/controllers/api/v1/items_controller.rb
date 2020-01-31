@@ -7,13 +7,14 @@ module Api
 
 
       def index
-        @items=@note.items
+        @items=@note.items.order("created_at DESC")
         json_response(@items)
       end
 
       def create
         @note.items.create!(item_params)
-        json_response(@note, :created)
+        @item=@note.items.find_by(name: item_params[:name])
+        json_response(@item, :created)
       end
 
       def show
